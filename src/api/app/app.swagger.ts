@@ -1,11 +1,16 @@
 import { HttpStatus } from '@lib/http-status';
 import { swaggerDoc } from '@lib/swagger-doc';
 
+const group = 'app';
+
 /**
  * Swagger documentation for the app routes
  */
-export const appDocs = {
-    '/app': swaggerDoc({
+export const appDocs = Object.assign(
+    {},
+
+    swaggerDoc({
+        path: `/${group}`,
         method: 'get',
         description: 'Greets the user with a friendly message',
         responses: [
@@ -19,7 +24,8 @@ export const appDocs = {
         ],
     }),
 
-    '/app/config': swaggerDoc({
+    swaggerDoc({
+        path: `/${group}/config`,
         method: 'get',
         description: 'Get service config.',
         responses: [
@@ -34,4 +40,4 @@ export const appDocs = {
             },
         ],
     }),
-};
+);

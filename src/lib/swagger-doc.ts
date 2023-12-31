@@ -9,6 +9,8 @@ interface SwaggerDocResponseSchemaInterface {
 }
 
 interface SwaggerDocParamsInterface {
+    path: string;
+
     method: string;
 
     summary?: string;
@@ -31,6 +33,7 @@ interface SwaggerDocParamsInterface {
  * If you don't want to wrap the response in a data object, set the usesJsonResponse to false.
  */
 export const swaggerDoc = ({
+    path,
     method,
     summary,
     description,
@@ -100,10 +103,12 @@ export const swaggerDoc = ({
     }
 
     const doc = {
-        [method]: {
-            summary: summary,
-            description: description,
-            responses: responseObj,
+        [path]: {
+            [method]: {
+                summary: summary,
+                description: description,
+                responses: responseObj,
+            },
         },
     };
 

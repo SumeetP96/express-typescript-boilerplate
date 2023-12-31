@@ -8,11 +8,7 @@ import swaggerUi from 'swagger-ui-express';
 const app = express();
 
 // Swagger API documentation
-app.use(
-    '/api-docs',
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerDocument, { explorer: true }),
-);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // App routes
 app.use('/app', appRoute);
