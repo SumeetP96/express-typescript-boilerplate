@@ -1,34 +1,41 @@
-import { EnvInterface } from '@type/env.type';
+import { EnvConfigInterface, NodeEnvType } from '@type/config';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const { env: e } = process;
 
-const env: EnvInterface = {
-    NODE_ENV: e.NODE_ENV
-        ? (e.NODE_ENV as 'development' | 'production')
-        : 'development',
+export const envConfig: EnvConfigInterface = {
+    // Environment
+    NODE_ENV: e.NODE_ENV ? (e.NODE_ENV as NodeEnvType) : 'development',
 
-    PORT: Number(e.PORT),
+    // Port on which this service will run
+    NODE_PORT: Number(e.NODE_PORT),
 
-    HOST: e.HOST || 'localhost',
+    // Address on which this service will run
+    NODE_HOST: e.NODE_HOST || 'localhost',
 
-    SERVICE_NAME: e.SERVICE_NAME || 'express-typescript-boilerplate',
+    // Name of this service
+    NODE_SERVICE_NAME: e.NODE_SERVICE_NAME || 'express-typescript-boilerplate',
 
-    JWT_EXPIRATION: e.JWT_EXPIRATION || '1h',
+    // Auth salt rounds
+    AUTH_SALT_ROUNDS: Number(e.AUTH_SALT_ROUNDS) || 10,
 
-    JWT_PUBLIC_SECRET: e.JWT_PUBLIC_SECRET || 'public-secret',
+    // Auth expiration time
+    AUTH_EXPIRATION: Number(e.AUTH_EXPIRATION) || 3600000,
 
-    JWT_PRIVATE_SECRET: e.JWT_PRIVATE_SECRET || 'private-secret',
+    // Auth public secret
+    AUTH_ADMIN_SECRET: e.AUTH_ADMIN_SECRET || 'very-secret-admin-secret',
 
-    CLIENT_ORIGIN: e.CLIENT_ORIGIN || '',
+    // JWT private secret for Admin
+    AUTH_CLIENT_SECRET: e.AUTH_CLIENT_SECRET || 'very-secret-client-secret',
 
-    ADMIN_ORIGIN: e.ADMIN_ORIGIN || '',
+    // Origin of admin facing client
+    ADMIN_ORIGIN: e.ADMIN_ORIGIN || 'http://localhost:5173',
 
-    MONGO_ATLAS_DEV_URI: e.MONGO_ATLAS_DEV_URI || '',
+    // Origin of customer facing client
+    CLIENT_ORIGIN: e.CLIENT_ORIGIN || 'http://localhost:5174',
 
-    MONGO_ATLAS_PROD_URI: e.MONGO_ATLAS_PROD_URI || '',
+    // MongoDB Atlas URI
+    MONGO_ATLAS_URI: e.MONGO_ATLAS_URI || '',
 };
-
-export default env;

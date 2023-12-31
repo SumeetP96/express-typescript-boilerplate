@@ -1,10 +1,8 @@
-import env from '@config/env';
-import { ApplicationInterface } from '@type/app.type';
+import { envConfig } from '@config/env';
+import { AppConfigInterface } from '@type/config';
 
-const app: ApplicationInterface = {
-    name: env.SERVICE_NAME,
-
-    origins: [env.CLIENT_ORIGIN, env.ADMIN_ORIGIN],
+const appConfig: AppConfigInterface = {
+    name: envConfig.NODE_SERVICE_NAME,
 };
 
-export default app;
+export default appConfig;

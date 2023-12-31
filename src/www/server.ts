@@ -1,18 +1,17 @@
-import env from '@config/env';
-import packages from '@package/index';
+import { api } from '@api/api';
+import { envConfig } from '@config/env';
+import { plugins } from '@plugins/plugins';
 import express from 'express';
 
 const app = express();
 
 const bootstrap = () => {
     try {
-        app.use(packages);
+        app.use(plugins);
 
-        app.get('/', (req, res) => {
-            res.json({ message: 'Hello World!', env: env.NODE_ENV });
-        });
+        app.use(api);
 
-        app.listen(3000, () => {
+        app.listen(envConfig.NODE_PORT, () => {
             console.log(`Server running on port 3000`);
         });
     } catch (error) {

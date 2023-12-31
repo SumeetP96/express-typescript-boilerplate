@@ -15,13 +15,14 @@
         "baseUrl": "./src",
         "paths": {
             "@www/*": ["www/*"],
-            "@package/*": ["packages/*"],
+            "@api/*": ["api/*"],
+            "@plugins/*": ["plugins/*"],
             "@lib/*": ["lib/*"],
             "@config/*": ["config/*"],
             "@util/*": ["utils/*"],
             "@type/*": ["types/*"]
         }
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "src/**/*.d.ts"],
     "exclude": ["node_modules"]
 }
