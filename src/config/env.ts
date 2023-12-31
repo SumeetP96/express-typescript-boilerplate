@@ -15,6 +15,9 @@ export const envConfig: EnvConfigInterface = {
     // Address on which this service will run
     NODE_HOST: e.NODE_HOST || 'localhost',
 
+    // Base url of this service
+    NODE_BASE_URL: e.NODE_BASE_URL || 'http://localhost:3000',
+
     // Name of this service
     NODE_SERVICE_NAME: e.NODE_SERVICE_NAME || 'express-typescript-boilerplate',
 

@@ -7,6 +7,8 @@ export interface EnvConfigInterface {
 
     NODE_HOST: string;
 
+    NODE_BASE_URL: string;
+
     NODE_SERVICE_NAME: string;
 
     AUTH_SALT_ROUNDS: number;
