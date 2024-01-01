@@ -41,4 +41,16 @@ export const envConfig: EnvConfigInterface = {
 
     // MongoDB Atlas URI
     MONGO_ATLAS_URI: e.MONGO_ATLAS_URI || '',
+
+    // AWS S3 bucket name
+    AWS_S3_BUCKET_NAME: e.AWS_S3_BUCKET_NAME || '',
+
+    // AWS S3 bucket region
+    AWS_S3_BUCKET_REGION: e.AWS_S3_BUCKET_REGION || '',
+
+    // AWS S3 bucket access key id
+    AWS_S3_BUCKET_ACCESS_KEY_ID: e.AWS_S3_BUCKET_ACCESS_KEY_ID || '',
+
+    // AWS S3 bucket secret access key
+    AWS_S3_BUCKET_SECRET_ACCESS_KEY: e.AWS_S3_BUCKET_SECRET_ACCESS_KEY || '',
 };

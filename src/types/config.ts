@@ -24,6 +24,14 @@ export interface EnvConfigInterface {
     CLIENT_ORIGIN: string;
 
     MONGO_ATLAS_URI: string;
+
+    AWS_S3_BUCKET_NAME: string;
+
+    AWS_S3_BUCKET_REGION: string;
+
+    AWS_S3_BUCKET_ACCESS_KEY_ID: string;
+
+    AWS_S3_BUCKET_SECRET_ACCESS_KEY: string;
 }
 
 export interface AppConfigInterface {
@@ -46,13 +54,3 @@ export type HttpMethodType =
     | 'PATCH'
     | 'DELETE'
     | 'OPTIONS';
-
-export interface CorsConfigInterface {
-    origins: Array<string>;
-
-    useCredentials: boolean;
-
-    httpMethods: Array<HttpMethodType>;
-
-    allowedHeaders: Array<string>;
-}

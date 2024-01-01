@@ -1,23 +1,23 @@
-import corsConfig from '@config/cors';
-import cors from 'cors';
+import { envConfig } from '@config/env';
+import cors, { CorsOptions } from 'cors';
 import express from 'express';
+
+const corsConfig: CorsOptions = {
+    // Allowed HTTP methods
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+
+    // Allowed origins
+    origin: [envConfig.CLIENT_ORIGIN, envConfig.ADMIN_ORIGIN],
+
+    // Allow cookies
+    credentials: true,
+
+    // Allowed headers
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
 const corsPlugin = express();
 
-corsPlugin.use(
-    cors({
-        // Allowed origins
-        origin: corsConfig.origins,
+corsPlugin.use(cors(corsConfig));
 
-        // Allow cookies
-        credentials: corsConfig.useCredentials,
-
-        // Allowed HTTP methods
-        methods: corsConfig.httpMethods,
-
-        // Allowed headers
-        allowedHeaders: corsConfig.allowedHeaders,
-    }),
-);
-
-export { corsPlugin };
+export { corsConfig, corsPlugin };
