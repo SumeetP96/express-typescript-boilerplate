@@ -1,6 +1,5 @@
 import {
     DeleteObjectCommand,
-    DeleteObjectsCommand,
     GetObjectCommand,
     PutObjectCommand,
     S3Client,
@@ -81,29 +80,8 @@ const deleteObject = async (path: string, bucket?: string) => {
     }
 };
 
-/**
- * Delete multiple files from AWS S3 bucket
- */
-const deleteMultipleObjects = async (paths: string[], bucket?: string) => {
-    const s3Client = new S3Client(s3Config);
-
-    const command = new DeleteObjectsCommand({
-        Bucket: bucket,
-        Delete: {
-            Objects: paths.map((path) => ({ Key: path })),
-        },
-    });
-
-    try {
-        return await s3Client.send(command);
-    } catch (error) {
-        console.error(error);
-    }
-};
-
 export const awsS3 = {
     putObject,
     getObject,
     deleteObject,
-    deleteMultipleObjects,
 };
